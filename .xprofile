@@ -1,0 +1,96 @@
+#!/bin/sh
+
+# This file runs when a DM logs you into a graphical session.
+# If you use startx/xinit like a Chad, this file will also be sourced.
+
+# Fix Gnome Apps Slow  Start due to failing services
+# Add this when you include flatpak in your system
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+#wal -i ~/Pictures/download/wal11.jpg
+#wal -i ~/Pictures/wall/442581.jpg
+# wal -i beach_islands_aerial_view_5k-wallpaper-1366x768.jpg
+# wal -i beautiful_beach_waves-wallpaper-1366x768.jpg
+# wal -i beautiful_nature_image_autumn_forest-wallpaper-1366x768.jpg
+# wal -i beautiful_tiger-wallpaper-1366x768.jpg
+# wal -i between_red_and_water-wallpaper-1366x768.jpg
+#  wal -i birds_tree_lake_water-wallpaper-1366x768.jpg
+# wal -i bridge_4-wallpaper-1366x768.jpg
+#wal -i dreamlike-wallpaper-1366x768.jpg
+#wal -i forest_creek_2-wallpaper-1366x768.jpg
+# wal -i green_forest_8-wallpaper-1366x768.jpg
+# wal -i green_paradise-wallpaper-1366x768.jpg
+# wal -i ~/Pictures/wall/guitar_34-wallpaper-1366x768.jpg
+# wal -i island_3-wallpaper-1366x768.jpg
+# wal -i let_it_snow_background-wallpaper-1366x768.jpg
+# wal -i loneliness_14-wallpaper-1366x768.jpg
+#wal -i mountain_peak_with_drifting_clouds-wallpaper-1366x768.jpg
+# wal -i mountains_lofoten_islands_norway-wallpaper-1366x768.jpg
+# wal -i nature_island_mountain-wallpaper-1366x768.jpg
+# wal -i park_landscape_autumn-wallpaper-1366x768.jpg
+#  wal -i park_reflections_autumn-wallpaper-1366x768.jpg
+#wal -i ~/Pictures/wall/reflection_in_kromme_rijn_river-wallpaper-1366x768.jpg
+# wal -i sound_2-wallpaper-1366x768.jpg
+#wal -i ~/Pictures/wall/the_perfect_reflection-wallpaper-1366x768.jpg
+# wal -i travel_the_world_4-wallpaper-1366x768.jpg
+# wal -i water_background_aesthetic-wallpaper-1366x768.jpg
+# wal -i winter_nature_8-wallpaper-1366x768.jpg
+# wal -i winter_wonderland_4-wallpaper-1366x768.jpg
+#wal -i ~/Pictures/wallpaper/KDE\ Plasma\ Scenery\ 95\ 4K.png
+# wal -i ~/Pictures/wallpaper/LeafDay.jpg
+# wal -i ~/Pictures/wallpaper/LeafNight.jpg
+# wal -i No\ LOGO\ NEB\ 388.png
+#wal -i elementary.jpg
+######## dark ######
+#wal -i ~/Pictures/wallpaper/kali-linux-wallpaper-v5.png
+# wal -i ~/Pictures/wallpaper/kisscc0-bible-santiago-de-compostela-first-epistle-of-pete-nature-5afda2891c1d21.8939521615265716571152.jpg
+#wal -i ~/Pictures/download/1.jpg
+#wal -i ~/Pictures/download/10.jpg
+#wal -i ~/Pictures/download/11.jpg
+#wal -i ~/Pictures/download/13.jpg
+#wal -i ~/Pictures/download/14.jpg
+#wal -i ~/Pictures/download/6.jpg
+#wal -i ~/Pictures/download/8.jpg
+#wal -i ~/Pictures/download/9.jpg
+# wal -i ~/Pictures/download/Arch-Linux-Wallpaper-31-1280x960.jpg
+# wal -i Razer-Wallpapers-07-2560-x-1440.jpg
+# wal -i ~/Pictures/download/kingfisher-2046453_1920.jpg
+# wal -i ~/Pictures/download/parrot.png
+#wal -i plumage-176723_1920.jpg
+#wal -i ~/Pictures/download/python.jpg
+#wal -i ~/Pictures/download/wal21.jpg
+#wal -i ~/Pictures/download/wal25.jpg
+#wal -i ~/Pictures/download/wal26.jpg
+#wal -i /home/anon/Pictures/pictures/4k-wallpaper-android-wallpaper-astro-astrology-1146134.jpg
+#wal -i /home/anon/Pictures/pictures/bubble-clean-clear-close-up-339119.jpg
+#wal -i /home/anon/Pictures/pictures/wallhaven-j5lqe5.jpg
+#wal -i /home/anon/Pictures/pictures/green.jpg
+#wal -i /home/anon/Pictures/pictures/wallhaven-0p8vvj.jpg
+#wal -i /home/anon/Pictures/pictures/wallhaven-838o5y.jpg
+#wal -i /home/anon/Pictures/wallpaper/ubuntu.jpg
+#wal -i /home/anon/Pictures/arcolinux/sea-of-mystery-3840x2160.jpg
+#wal -i ~/Pictures/pictures/top-view-photo-of-rocky-shore-1698618.jpg
+
+
+#wal -i /home/anon/Pictures/download/edit/4.jpg
+#mplayer /home/anon/Pictures/AI_Sound/ai.mp3
+## Ai
+sh ~/.sound/ai.sh &
+wal -i ~/Pictures/wal/1.png
+
+#wal -i ~/Pictures/pic/HD\ No\ Logo\ 2050.png
+#wal -i ~/Pictures/wall/sniper.jpg
+
+#mpd &			# music player daemon-you might prefer it as a service though
+#remaps &		# run the remaps script, switching caps/esc and more; check it for more info
+#setbg &			# set the background with the `setbg` script
+#xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &	# Uncomment to use Xresources colors/settings on startup
+#xcompmgr &		# xcompmgr for transparency
+#dunst &			# dunst for notifications
+#xset r rate 300 50 &	# Speed xrate up
+#unclutter &		# Remove mouse when idle
+picom &
+slstatus &
+#xmobar &
+#nitrogen --restore
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/polkit-1/polkit-agent-helper-1 &

@@ -1,0 +1,44 @@
+[Default Applications]
+inode/directory=xfce4-file-manager.desktop
+x-scheme-handler/trash=xfce4-file-manager.desktop
+application/pdf=org.pwmt.zathura.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-XMBA20.desktop
+video/webm=userapp-mplayer-OPAH30.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
+x-scheme-handler/chrome=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop
+x-scheme-handler/fdm=freedownloadmanager_fdm_up.desktop
+
+[Added Associations]
+inode/directory=xfce4-file-manager.desktop;
+x-scheme-handler/trash=xfce4-file-manager.desktop;
+application/pdf=org.pwmt.zathura.desktop;
+application/x-executable=code-oss.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-XMBA20.desktop;
+video/webm=userapp-mplayer-OPAH30.desktop;
+text/x-log=mpv.desktop;
+application/x-raw-disk-image=org.gnome.FileRoller.desktop;
+text/plain=firefox.desktop;brave-browser.desktop;google-chrome.desktop;
+application/x-java=code-oss.desktop;
+application/epub+zip=google-chrome.desktop;
+x-scheme-handler/http=firefox.desktop;
+x-scheme-handler/https=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+text/html=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
+
+[Removed Associations]

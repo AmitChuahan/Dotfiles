@@ -1,0 +1,5 @@
+[General]
+theme=Manjaro-Cyan-Kvantum
+
+[Applications]
+KvSimplicityDark=/usr/bin/vlc

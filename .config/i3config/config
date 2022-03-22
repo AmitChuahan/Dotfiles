@@ -1,0 +1,737 @@
+#####################################################################################################################
+#####################################################################################################################
+#################                      Anon                                #################
+#####################################################################################################################
+#####################################################################################################################
+####################################         ###################           ##########################################
+
+
+
+#################           border & title                                ###################
+for_window [class="^.*"] border pixel 1, title_format "<b> %class >> %title </b>"
+
+#####################################################################################################################
+######################                Gaps                               #####################
+#####################################################################################################################
+gaps inner 8
+gaps outer 2
+smart_gaps on
+smart_borders on
+
+
+
+
+#####################################################################################################################
+#################                       gaps change                                           #################
+#####################################################################################################################
+
+
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+#####################################################################################################################
+#################                          compton of i3wm                                          #################
+#####################################################################################################################
+
+#if you want transparency on non-focused windows, ...
+exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+
+
+
+#####################################################################################################################
+#################                          choose the font                                          #################
+#####################################################################################################################
+
+font pango:monospace 8
+
+#####################################################################################################################
+#################                          Define the $mod variable/key                             #################
+#####################################################################################################################
+
+# mod key used for most binds
+# Mod1 = Alt
+# Mod4 = Super
+set $Mod Mod4
+
+# direction keys
+set $up l
+set $down k
+set $left j
+set $right semicolon
+
+
+
+#####################################################################################################################
+#####################################################################################################################
+#####################################################################################################################
+#################                          bar appearance                                           #################
+#####################################################################################################################
+#####################################################################################################################
+#####################################################################################################################
+
+bar {
+
+    height 16
+    workspace_buttons yes
+    font pango:Noto Sans 8
+    mode hide
+    position top
+    #position bottom
+    tray_output none
+    
+colors {
+        background #2F2F2F
+        statusline #eeeeee
+        separator  #666666
+        ###########           border  backgr. text
+        focused_workspace     #a9a9a9 #5f676a #eeeeee
+        active_workspace      #a9a9a9 #5f676a #a9a9a9
+        inactive_workspace    #a9a9a9 #222222 #a9a9a9
+        urgent_workspace      #a9a9a9 #d42121 #FFFFFF
+        }
+
+
+
+ ################     i3status         ################################
+    
+    #status_command ~/.conky/config
+    status_command i3status
+    #status_command i3status -c ~/.config/i3/i3status.conf
+  }
+
+
+
+
+# DarkGrey background with white text - not focus grey background - black text
+# Windows decoration colors
+# class                 border  backgr. text    indicator
+ client.focused          #4c7899 #285577 #ffffff #2e9ef4
+ client.focused_inactive #333333 #5f676a #ffffff #484e50
+ client.unfocused        #333333 #222222 #888888 #292d2e
+ client.urgent           #2f343a #900000 #ffffff #900000
+ client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+
+
+
+
+
+# OPTION 2 : ###############     i3blocks         #########################
+
+	#status_command i3blocks
+	#status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	#status_command i3blocks -c ~/.config/i3/i3blocks-rainbow.conf
+	#status_command i3blocks -c ~/.config/i3/i3blocks-original.conf
+	#status_command i3blocks -c ~/.config/i3/i3blocks-awesome.conf
+
+
+# OPTION 3 : #################     conky           #########################
+
+    # You can also replace the istatus bar with a conky
+    # start-conky-i3statusbar.sh is started and conky will follow
+    # documentation : https://i3wm.org/docs/user-contributed/conky-i3bar.html
+    # conky configuration is in conky-i3statusbar
+
+	#status_command ~/.config/i3/start-conky-i3statusbar.sh
+
+
+
+
+
+# OPTION 4 : ####################          polybar                ########################
+####################################################################################################################
+####################################################################################################################
+
+ #exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
+        
+
+
+##########################################################################################################
+################### BAR APPEARANCE ARCHIVE ######################
+##########################################################################################################
+
+# Orange background with black text - not focus grey background - white text
+# Windows decoration colors
+# class                   border  backgr. text    indicator
+# client.background color         #222222
+# client.focused          #FFAF00 #FFAF00 #333333 #00AA00
+# client.unfocused        #222222 #222222 #aaaaaa #2e9ef4
+# client.focused_inactive #333333 #5f676a #ffffff #484e50
+# client.urgent           #2f343a #900000 #ffffff #900000
+
+
+# DarkGrey background with white text - not focus grey background - black text
+# Windows decoration colors
+# https://i3wm.org/docs/userguide.html#_changing_colors
+# client.background color
+# class                   border  backgr. text    indicator
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4
+# client.focused_inactive #333333 #5f676a #ffffff #484e50
+# client.unfocused        #333333 #222222 #888888 #292d2e
+# client.urgent           #2f343a #900000 #ffffff #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+#   colors {
+#            background #222222
+#            statusline #eeeeee
+#            separator #666666
+             #                  border  backgr. text
+#            focused_workspace  #4c7899 #285577 #ffffff
+#            active_workspace   #333333 #5f676a #ffffff
+#            inactive_workspace #333333 #222222 #888888
+#            urgent_workspace   #2f343a #900000 #ffffff
+#            }
+
+# Alternatives
+# BLue and grey Colors
+# https://github.com/Gravemind/ArchLinux/blob/master/.i3/config
+# class                   border  backgr. text    indicator
+# client.focused          #000000 #285577 #dddddd #0099ff
+# client.focused_inactive #000000 #333333 #888888 #484e50
+# client.unfocused        #000000 #000000 #555555 #292d2e
+# client.urgent           #2f343a #900000 #ffffff #900000
+
+# blue background with white text
+# Windows decoration colors
+# class                   border  backgr. text    indicator
+# client.background color         #222222
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4
+# client.focused_inactive #333333 #5f676a #ffffff #484e50
+# client.unfocused        #333333 #222222 #888888 #292d2e
+# client.urgent           #2f343a #900000 #ffffff #900000
+
+# Blue-green background - orange text
+# Windows decoration colors
+# http://www.fastlinux.eu/_archiv/index.php?page=linux047
+# class                    border  backgr. text
+# client.focused           #2B6473 #2B6473 #FFA000
+# client.focused_inactive  #004050 #004050 #FFA000
+# client.unfocused         #004050 #004050 #cccccc
+# client.urgent            #900000 #900000 #ffffff
+
+
+# Red background - black text
+# Windows decoration colors
+# https://github.com/Blueblur/dotfiles/blob/master/.i3/config
+# class                 border  backgr. text    indicator
+# client.focused          #d64937 #d64937 #2D2D2D #2e9ef4
+# client.focused_inactive #2d2d2d #2d2d2d #dcdcdc #484e50
+# client.unfocused        #2D2D2D #2d2d2d #dcdcdc #292d2e
+# client.urgent           #2D2D2D #2D2D2D #dcdcdc #900000
+
+
+
+
+#####################################################################################################################
+#################                         bar toggle, hide or show                        #################
+#####################################################################################################################
+
+bindsym mod1+b bar mode toggle
+
+
+#####################################################################################################################
+#################                          Autostart, Startup                          #################
+#####################################################################################################################
+# run with reload
+exec_always --no-startup-id xrdb -load ~/.Xresources
+
+#feh sets wallpaper
+#exec --no-startup-id feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
+# run once
+#exec --no-startup-id xfsettingsd
+#Conky
+#exec --no-startup-id conky -c ~/.conky/config
+#variety
+#exec --no-startup-id variety
+#Updater
+#exec --no-startup-id pamac-tray
+
+# bluetooth
+#exec --no-startup-id blueberry-tray
+# network
+#exec --no-startup-id nm-applet
+
+
+
+#####################################################################################################################
+#################                          Menu                                  #################
+#####################################################################################################################
+
+# needed for super to launch rofi through ksuperkey, see ~/.xprofile
+bindsym Mod1+d exec --no-startup-id rofi_run -r
+# launchers
+#bindsym Control+space exec --no-startup-id rofi_run -r
+
+
+#####################################################################################################################
+#################                          Stopping an application                                  #################
+#####################################################################################################################
+
+# kill focused window
+bindsym $Mod+c kill
+
+
+
+
+#####################################################################################################################
+#################                        Application keyboard Shortcuts                            #################
+#####################################################################################################################
+
+#conky
+#bindsym $mod+c exec --no-startup-id conky-toggle
+#bindsym control+mod1+Next exec --no-startup-id conky-rotate -n
+#bindsym control+mod1+Prior exec --no-startup-id conky-rotate -p
+
+
+#System monitor
+#bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
+
+
+#rofi theme selector
+bindsym control+mod1+r exec rofi-theme-selector
+
+
+#Terminal
+bindsym $Mod+Return     exec --no-startup-id exo-open --launch TerminalEmulator
+bindsym mod1+Return exec termite
+bindsym Control+Return exec st
+bindsym mod1+x exec xterm
+
+#File Manager
+bindsym mod1+r exec termite -e ranger
+bindsym $Mod+f          exec --no-startup-id exo-open --launch FileManager
+
+#Web Browser
+bindsym mod1+shift+c exec chromium
+bindsym $Mod+w          exec --no-startup-id exo-open --launch WebBrowser
+bindsym mod1+shift+t exec tor-browser
+
+#pamac-manager
+bindsym control+mod1+p exec  pamac-manager
+
+#coding
+bindsym $mod+t exec subl3
+
+#Partition Editor
+bindsym $mod+g exec gparted
+
+#wallpaper
+bindsym mod1+w exec nitrogen
+
+#Image Editor
+bindsym $mod+Shift+e exec gimp
+
+#Camera
+bindsym $mod+shift+v exec guvcview
+
+#Music
+bindsym $mod+m exec clementine
+
+#NetWork Manager
+bindsym mod1+n exec networkmanager_dmenu
+
+#Volume controler
+bindsym control+mod1+u exec  pavucontrol
+
+#AndroidDevice
+bindsym $mod+a exec android-file-transfer
+
+#Settings
+bindsym mod1+shift+s exec qt5ct
+
+#Process Manager
+bindsym mod1+shift+p exec stacer
+bindsym mod1+p exec st -e htop
+
+
+#YoutubeVideoDownload
+bindsym mod1+y exec clipgrab
+bindsym $mod+shift+d exec youtube-dl-gui
+
+#Theming
+bindsym mod1+shift+l exec lxappearance
+
+
+
+
+
+#####################################################################################################################
+#################                          logout,logoff,reboot,lock                        #################
+#####################################################################################################################
+
+# logout script
+bindsym $Mod+x exec --no-startup-id rofi_run -l
+
+#####################################################################################################################
+#################                          fullscreen              #################
+#####################################################################################################################
+
+# enter fullscreen mode for the focused container
+bindsym mod1+f fullscreen toggle
+
+#####################################################################################################################
+#################                         screenshot                        #################
+#####################################################################################################################
+
+bindsym Print exec --no-startup-id "scrot '%S.png' -e 'mv $f $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png ; feh $$(xdg-user-dir PICTURES)/ArchLabs-%S-$wx$h.png'"
+#bindsym Control+Print exec --no-startup-id xfce4-screenshooter
+#bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
+#bindsym shift+Print exec --no-startup-id shutter
+
+#####################################################################################################################
+#################                         Volume                      #################
+#####################################################################################################################
+bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext        exec --no-startup-id playerctl next
+bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
+bindsym XF86AudioStop        exec --no-startup-id playerctl stop
+bindsym XF86AudioMute        exec --no-startup-id pamixer -t
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 2
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 2
+
+#####################################################################################################################
+#################                        Brightness                   #################
+#####################################################################################################################
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+#####################################################################################################################
+#################                         Workspace                        #################
+#####################################################################################################################
+set $workspace1 "1: anon "
+set $workspace2 "2: Coding "
+set $workspace3 "3: WebBrowser "
+set $workspace4 "4: Music "
+set $workspace5 "5: File Manager "
+set $workspace6 "6: Graphic "
+set $workspace7 "7: Camera "
+set $workspace8 "8: Tor "
+set $workspace9 "9: settings "
+set $workspace10 "10: Disks "
+#####################################################################################################################
+#################                      switch to workspace                    #################
+#####################################################################################################################
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# switch to workspace - numpad alternatives
+bindsym $mod+Mod2+KP_1 $workspace1
+bindsym $mod+Mod2+KP_2 $workspace2
+bindsym $mod+Mod2+KP_3 $workspace3
+bindsym $mod+Mod2+KP_4 $workspace4
+bindsym $mod+Mod2+KP_5 $workspace5
+bindsym $mod+Mod2+KP_6 $workspace6
+bindsym $mod+Mod2+KP_7 $workspace7
+bindsym $mod+Mod2+KP_8 $workspace8
+bindsym $mod+Mod2+KP_9 $workspace9
+bindsym $mod+Mod2+KP_0 $workspace0
+
+# switch to next or previous workspace
+bindsym $mod+Mod1+Left workspace prev
+bindsym $mod+Mod1+Right workspace next
+#####################################################################################################################
+#################                      move focused container to workspace                     #################
+#####################################################################################################################
+
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# move focused container to workspace - numpad alternatives
+#bindsym $Mod+Shift+Mod2+KP_End   move container to $workspace1; $workspace1
+#bindsym $Mod+Shift+Mod2+KP_Down  move container to $workspace2; $workspace2
+#bindsym $Mod+Shift+Mod2+KP_Next  move container to $workspace3; $workspace3
+#bindsym $Mod+Shift+Mod2+KP_Left  move container to $workspace4; $workspace4
+#bindsym $Mod+Shift+Mod2+KP_Begin move container to $workspace5; $workspace5
+#bindsym $Mod+Shift+Mod2+KP_Right move container to $workspace6; $workspace6
+#bindsym $Mod+Shift+Mod2+KP_Home  move container to $workspace7; $workspace7
+#bindsym $Mod+Shift+Mod2+KP_Up    move container to $workspace8; $workspace8
+#bindsym $Mod+Shift+Mod2+KP_Home  move container to $workspace9; $workspace9
+#bindsym $Mod+Shift+Mod2+KP_Up    move container to $workspace10; $workspace10
+
+
+
+
+#####################################################################################################################
+#################                          reload changed configuration                             #################
+#####################################################################################################################
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $Mod+Shift+r restart
+
+# reload the configuration file
+bindsym $Mod+Shift+c reload
+
+
+#####################################################################################################################
+#################                        Container/Window control                         #################
+#####################################################################################################################
+
+
+# Scratchpad, Floating
+bindsym $Mod+space floating toggle
+floating_modifier  Mod1
+
+bindsym $Mod+Shift+z move scratchpad
+bindsym $Mod+z scratchpad show
+
+# change focus
+bindsym $Mod+$left  focus left
+bindsym $Mod+$down  focus down
+bindsym $Mod+$up    focus up
+bindsym $Mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $Mod+Left  focus left
+bindsym $Mod+Down  focus down
+bindsym $Mod+Up    focus up
+bindsym $Mod+Right focus right
+
+bindsym $Mod+p focus parent
+bindsym $Mod+d focus child
+
+# move focused window
+bindsym $Mod+Shift+$left  move left  10px
+bindsym $Mod+Shift+$down  move down  10px
+bindsym $Mod+Shift+$up    move up    10px
+bindsym $Mod+Shift+$right move right 10px
+
+# alternatively, you can use the cursor keys:
+bindsym $Mod+Shift+Up    move up    10px
+bindsym $Mod+Shift+Down  move down  10px
+bindsym $Mod+Shift+Left  move left  10px
+bindsym $Mod+Shift+Right move right 10px
+
+#####################################################################################################################
+#################                          resize                                                   #################
+#####################################################################################################################
+
+bindsym Mod1+Up    resize shrink height 10 px or 1 ppt
+bindsym Mod1+Down  resize grow   height 10 px or 1 ppt
+bindsym Mod1+Left  resize shrink width  10 px or 1 ppt
+bindsym Mod1+Right resize grow   width  10 px or 1 ppt
+
+# layout toggle, keycode 23 is Tab
+bindcode Mod1+23 layout toggle tabbed split
+bindcode $Mod+23 layout toggle splitv splith
+
+# switch to workspace with urgent window
+for_window [urgent="latest"] focus
+focus_on_window_activation   focus
+
+
+#####################################################################################################################
+#################                          Tiling parameters                                        #################
+#####################################################################################################################
+# container layout
+bindsym $Mod+h split h
+bindsym $Mod+v split v
+bindsym $Mod+Shift+t layout tabbed
+bindsym $Mod+Shift+s layout stacking
+bindsym $Mod+Shift+h layout toggle split
+
+default_orientation horizontal
+
+#####################################################################################################################
+#################                          Border & Gaps                                    #################
+#####################################################################################################################
+
+new_window normal
+new_float  normal
+
+hide_edge_borders both
+
+#bindsym $Mod+shift+b border toggle
+
+# changing border style
+bindsym $Mod+n border normal
+bindsym $Mod+y border 1pixel
+bindsym $Mod+u border none
+
+# change gaps
+bindsym $Mod+plus                gaps inner current plus  5
+bindsym $Mod+minus               gaps inner current minus 5
+bindsym $Mod+Shift+plus          gaps outer current plus  5
+bindsym $Mod+Shift+minus         gaps outer current minus 5
+bindsym $Mod+Control+plus        gaps inner all     plus  5
+bindsym $Mod+Control+minus       gaps inner all     minus 5
+bindsym $Mod+Control+Shift+plus  gaps outer all     plus  5
+bindsym $Mod+Control+Shift+minus gaps outer all     minus 5
+
+
+
+#####################################################################################################################
+#################                          assign applications to workspaces                       #################
+#####################################################################################################################
+
+#assign class
+#assign [class="Firefox"] $workspace3
+#assign [class="Rhythmbox"] $workspace4
+#assign [class="vlc"] $workspace4
+#assign [class="pcmanfm"] $workspace5
+
+assign [class="(?i)(?:geany)"]   → $workspace2
+assign [class="(?i)(?:subl3)"]   → $workspace2
+assign [class="(?i)(?:firefox)"] → $workspace3
+assign [class="(?i)(?:chromium)"] → $workspace3
+assign [class="(?i)(?:rhythmbox)"]  → $workspace4
+assign [class="(?i)(?:clementine)"]  → $workspace4
+assign [class="(?i)(?:vlc)"]  → $workspace4
+assign [class="(?i)(?:pcmanfm)"]  → $workspace5
+assign [class="(?i)(?:thunar)"]  → $workspace5
+assign [class="(?i)(?:gimp)"]  → $workspace6
+assign [class="(?i)(?:guvcview)"]  → $workspace7
+assign [class="(?i)(?:Tor Browser)"]  → $workspace8
+assign [class="(?i)(?:lxappearance)"]  → $workspace9
+assign [class="(?i)(?:qt5ct)"]  → $workspace9
+assign [class="(?i)(?:nitrogen)"]  → $workspace9
+assign [class="(?i)(?:stacer)"]  → $workspace9
+assign [class="(?i)(?:gparted)"]  → $workspace10
+
+#####################################################################################################################
+#################                      focus, floating, & sticky                                      #################
+#####################################################################################################################
+
+for_window [class="(?i)(?:qt5ct|pinentry)"]          floating enable, focus
+for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+for_window [window_role="(?i)(?:pop-up|setup)"]      floating enable
+for_window [class="Tor Browser" instance="Navigator"] floating enable
+for_window [class="Termite"] floating enable
+for_window [class="St"] floating enable
+for_window [class="XTerm"] floating enable
+for_window [class="ClipGrab"] floating enable
+for_window [class="aft-linux-qt"] floating enable
+for_window [class="vlc"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="Gpicview"] floating enable 
+for_window [class="MPlayer"] floating enable
+for_window [class="Youtube-dl-gui"] floating enable
+for_window [class="Brasero"] floating enable
+for_window [class="File-roller"] floating enable
+for_window [class="qBittorrent"] floating enable
+#for_window [class="Surf"] floating enable
+#####################################################################################################################
+#################                          Popups  control                                          #################
+#####################################################################################################################
+
+#Popups during fullscreen mode
+popup_during_fullscreen smart
+
+
+#####################################################################################################################
+#################                          give focus to applications                               #################
+#####################################################################################################################
+
+
+for_window [class="st"] focus
+for_window [class="Termite"] focus
+
+#####################################################################################################################
+#################                          variety for your wallpapers                              #################
+#####################################################################################################################
+
+# trash wallpaper
+#bindsym mod1+t exec --no-startup-id variety -t
+# next wallpaper
+#bindsym mod1+n exec --no-startup-id variety -n
+#bindsym mod1+Right exec --no-startup-id variety -n
+# previous wallpaper
+#bindsym mod1+p exec --no-startup-id variety -p
+#bindsym mod1+Left exec --no-startup-id variety -p
+# favorite wallpaper
+#bindsym mod1+f exec --no-startup-id variety -f
+# pause wallpaper
+#bindsym mod1+Up exec --no-startup-id variety --pause
+# resume wallpaper
+#bindsym mod1+Down exec --no-startup-id variety --resume
+
+#####################################################################################################################
+#################                          variety with pywal for your wallpapers                   #################
+#####################################################################################################################
+
+# next wallpaper
+#bindsym mod1+Shift+n exec --no-startup-id variety -n && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+# previous wallpaper
+#bindsym mod1+Shift+p exec --no-startup-id variety -p && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+# trash wallpaper
+#bindsym mod1+Shift+t exec --no-startup-id variety -t && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&
+# Update Wallpaper
+#bindsym mod1+Shift+u exec --no-startup-id wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)
+
+
+#####################################################################################################################
+#################                                 system applications                               #################
+#####################################################################################################################
+
+#exec --no-startup-id xfce4-power-manager &
+# ommitted next line to get super key to bring up the menu in xfce and avoid error then in i3
+# IF xfsettingsd is activated you can not change themes
+#exec --no-startup-id xfsettingsd &
+#exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+
+
+
+
+
+
+
+#####################################################################################################################
+#########################################     END    ################################################################
+
+#####################################################################################################################
+########################################               ANon         ###########################################
+#####################################################################################################################
+#############################################
+#####################################################################################################################
